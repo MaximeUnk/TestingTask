@@ -56,24 +56,24 @@ HTTP-клиент: Fetch API
 Структура проекта
 
 online-store/
-├── app/                    # Next.js App Router
-│   ├── globals.css        # Глобальные стили
-│   ├── layout.tsx         # Основной layout
-│   └── page.tsx          # Главная страница
-├── components/            # React компоненты
-│   ├── LoadingSpinner.tsx # Компоненты загрузки
-│   ├── OrderForm.tsx     # Форма заказа
-│   ├── ProductCard.tsx   # Карточка товара
-│   ├── ReviewCard.tsx    # Карточка отзыва
-│   └── SuccessModal.tsx  # Модальное окно успеха
-├── contexts/             # React Context
-│   └── CartContext.tsx   # Контекст корзины
-├── lib/                  # Утилиты
-│   ├── api.ts           # API функции
-│   └── storage.ts       # Работа с localStorage
-├── types/               # TypeScript типы
-│   └── index.ts        # Основные типы
-└── public/             # Статические файлы
+app/ - Страницы сайта
+  globals.css - Стили
+  layout.tsx - Шаблон страницы
+  page.tsx - Главная страница
+components/ - Компоненты
+  LoadingSpinner.tsx - Загрузка
+  OrderForm.tsx - Форма заказа
+  ProductCard.tsx - Карточка товара
+  ReviewCard.tsx - Отзыв
+  SuccessModal.tsx - Окно успеха
+contexts/ - Глобальные данные
+  CartContext.tsx - Корзина
+lib/ - Функции
+  api.ts - Запросы к серверу
+  storage.ts - Сохранение данных
+types/ - Типы данных
+  index.ts - Основные типы
+public/ - Картинки и файлы
 
 Особенности реализации
 
