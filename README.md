@@ -1,36 +1,127 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
+Реализованный функционал
 
-First, run the development server:
+Основные требования
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Адаптивная верстка - сайт корректно отображается на мобильных устройствах, планшетах и десктопах
+Загрузка товаров через API - товары загружаются с сервера с пагинацией
+Бесконечная прокрутка - новые товары подгружаются автоматически при прокрутке вниз
+Загрузка отзывов - отзывы загружаются из API и отображаются с HTML-контентом
+Интерактивная корзина товаров:
+  - Кнопка "Купить" превращается в кнопки + и - с полем ввода количества
+  - Возможность вручную ввести количество товара
+  - Автоматический пересчет общей стоимости
+Сохранение данных - корзина и номер телефона сохраняются в localStorage и восстанавливаются при перезагрузке
+Форма заказа с валидацией:
+  - Маска для поля телефона (+7 (999) 999-99-99)
+  - Валидация корректности номера телефона
+  - Подсветка ошибок красным цветом
+Отправка заказа - отправка данных на сервер с обработкой ответа
+Popup успешного заказа - модальное окно в стиле сайта после успешной отправки
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Дополнительные улучшения
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+UX улучшения:
+  - Загрузочные спиннеры и скелетоны для контента
+  - Плавные анимации и переходы
+  - Уведомления (toast) о действиях пользователя
+  - Sticky-позиционирование формы заказа
+  
+Безопасность:
+  - Защита от XSS атак в отзывах с использованием DOMPurify
+  - Валидация и санитизация пользовательского ввода
+  
+Производительность:
+  - SSR (Server-Side Rendering) через Next.js
+  - Оптимизация изображений с Next.js Image
+  - Ленивая загрузка товаров
+  
+Надежность:
+  - Обработка ошибок сети и API
+  - Fallback изображения для товаров
+  - Graceful degradation при недоступности API
+  - TypeScript для типобезопасности
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## Learn More
+Технологический стек
 
-To learn more about Next.js, take a look at the following resources:
+Frontend: Next.js 15, React 18+, TypeScript
+Стили: Tailwind CSS
+Управление состоянием: React Context + useReducer
+HTTP-клиент: Fetch API
+Иконки: Lucide React
+Уведомления: React Hot Toast
+Безопасность: DOMPurify
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+API Endpoints
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Приложение интегрируется со следующими API:
 
-## Deploy on Vercel
+GET http://o-complex.com:1337/reviews - получение отзывов
+GET http://o-complex.com:1337/products?page=1&page_size=20 - получение товаров с пагинацией
+POST http://o-complex.com:1337/orders - отправка заказа
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Установка и запуск
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Клонирование репозитория:
+   git clone <URL_РЕПОЗИТОРИЯ>
+   cd online-store
+
+2. Установка зависимостей:
+   npm install
+
+3. Запуск в dev-режиме:
+   npm run dev
+
+4. Открытие в браузере:
+   http://localhost:3000
+
+Сборка для production
+
+npm run build
+npm start
+
+Структура проекта
+
+online-store/
+├── app/                    # Next.js App Router
+│   ├── globals.css        # Глобальные стили
+│   ├── layout.tsx         # Основной layout
+│   └── page.tsx          # Главная страница
+├── components/            # React компоненты
+│   ├── LoadingSpinner.tsx # Компоненты загрузки
+│   ├── OrderForm.tsx     # Форма заказа
+│   ├── ProductCard.tsx   # Карточка товара
+│   ├── ReviewCard.tsx    # Карточка отзыва
+│   └── SuccessModal.tsx  # Модальное окно успеха
+├── contexts/             # React Context
+│   └── CartContext.tsx   # Контекст корзины
+├── lib/                  # Утилиты
+│   ├── api.ts           # API функции
+│   └── storage.ts       # Работа с localStorage
+├── types/               # TypeScript типы
+│   └── index.ts        # Основные типы
+└── public/             # Статические файлы
+
+Особенности реализации
+
+Корзина товаров
+- Использует React Context для глобального доступа
+- Reducer для управления сложным состоянием
+- Автоматическое сохранение в localStorage
+- Подсчет общей стоимости и количества
+
+Infinite Scroll
+- Автоматическая подгрузка при приближении к концу страницы
+- Индикаторы загрузки
+- Обработка состояния "больше товаров нет"
+
+Безопасность
+- DOMPurify для очистки HTML от вредоносного кода
+- Валидация всех пользовательских вводов
+- Обработка ошибок сети
+
+Мобильная адаптивность
+- Mobile-first подход
+- Адаптивная сетка (Grid Layout)
+- Оптимизированные размеры для разных экранов
