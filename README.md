@@ -53,34 +53,6 @@ HTTP-клиент: Fetch API
 Уведомления: React Hot Toast
 Безопасность: DOMPurify
 
-API Endpoints
-
-Приложение интегрируется со следующими API:
-
-GET http://o-complex.com:1337/reviews - получение отзывов
-GET http://o-complex.com:1337/products?page=1&page_size=20 - получение товаров с пагинацией
-POST http://o-complex.com:1337/orders - отправка заказа
-
-Установка и запуск
-
-1. Клонирование репозитория:
-   git clone <URL_РЕПОЗИТОРИЯ>
-   cd online-store
-
-2. Установка зависимостей:
-   npm install
-
-3. Запуск в dev-режиме:
-   npm run dev
-
-4. Открытие в браузере:
-   http://localhost:3000
-
-Сборка для production
-
-npm run build
-npm start
-
 Структура проекта
 
 online-store/
