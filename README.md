@@ -55,25 +55,6 @@ HTTP-клиент: Fetch API
 
 Структура проекта
 
-online-store/
-app/ - Страницы сайта
-  globals.css - Стили
-  layout.tsx - Шаблон страницы
-  page.tsx - Главная страница
-components/ - Компоненты
-  LoadingSpinner.tsx - Загрузка
-  OrderForm.tsx - Форма заказа
-  ProductCard.tsx - Карточка товара
-  ReviewCard.tsx - Отзыв
-  SuccessModal.tsx - Окно успеха
-contexts/ - Глобальные данные
-  CartContext.tsx - Корзина
-lib/ - Функции
-  api.ts - Запросы к серверу
-  storage.ts - Сохранение данных
-types/ - Типы данных
-  index.ts - Основные типы
-public/ - Картинки и файлы
 
 Особенности реализации
 

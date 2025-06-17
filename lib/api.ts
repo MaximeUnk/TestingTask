@@ -1,6 +1,6 @@
 import { Product, ProductsResponse, Review, OrderData } from '@/types';
 
-const API_BASE = 'http://o-complex.com:1337';
+const API_BASE = process.env.NEXT_PUBLIC_API_BASE_URL;
 
 export async function fetchProducts(page: number = 1, pageSize: number = 20): Promise<ProductsResponse> {
   try {
